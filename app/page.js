@@ -1,9 +1,10 @@
-import React from 'react'
+
+import Movie from '@/Component/Movie'
 
 const page = () => {
   return (
     <div>
-      <h1>bahadur</h1>
+      <Movie/>
     </div>
   )
 }
