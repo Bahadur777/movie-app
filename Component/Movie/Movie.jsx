@@ -6,7 +6,8 @@ import React, { useState, useEffect } from "react";
 const Movie = () => {
   const [movies, setMovies] = useState([]);
   const [searchPoint, setSearchPoint] = useState('');
-  const [endPoint, setEndPoint] = useState('')
+  // const [endPoint, setEndPoint] = useState('')
+  const [fMovies, setFMovies] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,6 +39,10 @@ const Movie = () => {
 
   const onChangeHandler = (e) =>{
     setSearchPoint(e.target.value)
+    console.log("The search point is", searchPoint);
+    const filteredMovies = movies.filter((movie) => movie.l && movie.l.toLowerCase().includes(searchPoint.toLowerCase()));
+    setFMovies(filteredMovies);
+    console.log("The filtered movies are", filteredMovies);
   }
    const submitHandler =e=>{
       e.preventDefault()
@@ -46,9 +51,12 @@ const Movie = () => {
     <div className='movie-section'>
       <div className='search'>
         <form onSubmit={submitHandler} >
-          <input type="text" value={searchPoint}  onChange={onChangeHandler}/>
-          <button type='submit'>Submit</button>
+          <input type="text" value={searchPoint}  onChange={onChangeHandler} placeholder='search movies'/>
+          <button type='submit'>Search</button>
         </form>
+      </div>
+      <div className="suggestions">
+        {fMovies && (fMovies.map((fm) =>(<li key={fm.id}>{fm.l}</li>)))}
       </div>
       <ul className="movie-row">
         {movies.map((movie) => (
