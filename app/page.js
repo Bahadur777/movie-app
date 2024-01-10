@@ -1,5 +1,5 @@
 
-import Movie from '@/Component/Movie'
+import Movie from '@/Component/Movie/Movie'
 
 const page = () => {
   return (

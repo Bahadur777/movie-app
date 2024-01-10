@@ -1,9 +1,12 @@
 "use client";
+import './movie.css'
 
 import React, { useState, useEffect } from "react";
 
 const Movie = () => {
   const [movies, setMovies] = useState([]);
+  const [searchPoint, setSearchPoint] = useState('');
+  const [endPoint, setEndPoint] = useState('')
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,22 +36,36 @@ const Movie = () => {
     fetchData();
   }, []);
 
+  const onChangeHandler = (e) =>{
+    setSearchPoint(e.target.value)
+  }
+   const submitHandler =e=>{
+      e.preventDefault()
+   }
   return (
-    <>
-      <div>Movie</div>
-      <ul className="">
+    <div className='movie-section'>
+      <div className='search'>
+        <form onSubmit={submitHandler} >
+          <input type="text" value={searchPoint}  onChange={onChangeHandler}/>
+          <button type='submit'>Submit</button>
+        </form>
+      </div>
+      <ul className="movie-row">
         {movies.map((movie) => (
-          <li key={movie.id}>
+          <li key={movie.id} className='movie-col'>
             {movie.i && (
               <>
                 <img src={movie.i.imageUrl} alt={movie.l} />
                 <p>{movie.l}</p>
+                <p>{movie.q}</p>
+                <p>{movie.rank}</p>
+                <p>{movie.s}</p>
               </>
             )}
           </li>
         ))}
       </ul>
-    </>
+    </div>
   );
 };
 
