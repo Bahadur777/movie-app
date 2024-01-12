@@ -51,8 +51,8 @@ const Movie = () => {
     <div className='movie-section'>
       <div className='search'>
         <form onSubmit={submitHandler} >
-          <input type="text" value={searchPoint}  onChange={onChangeHandler} placeholder='search movies'/>
-          <button type='submit'>Search</button>
+          <input className='input-t' type="text" value={searchPoint}  onChange={onChangeHandler} placeholder='search movies'/>
+          <button type='submit' className='sub-btn'>Search</button>
         </form>
       </div>
       <div className="suggestions">

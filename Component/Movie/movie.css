@@ -20,3 +20,13 @@
 .suggestions {
     color: red;
 }
+.input-t{
+    border: 1px solid red;
+    padding: 5px 10px;
+}
+.sub-btn{
+    padding: 6px 10px;
+    width: fit-content;
+    background-color: red;
+    
+}
